@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Soneta.Sdk">
+	<PropertyGroup>
+		<TargetFramework>$(SonetaTargetFramework)</TargetFramework>
+		<Authors>Develsoft</Authors>
+		<Version>$(SonetaPackageVersion)</Version>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>C:\Program Files\Common Files\Soneta\Assemblies\</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>C:\Program Files\Common Files\Soneta\Assemblies\</OutputPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Update="Soneta.Products.Modules" Version="$(SonetaPackageVersion)" />
+	</ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="copy &quot;C:\Program Files\Common Files\Soneta\Assemblies\$(SonetaTargetFramework)\Develsoft.DodajTowarExt.dll&quot; &quot;C:\Program Files\Common Files\Soneta\Assemblies\Develsoft.DodajTowarExt.dll&quot;" />
+	</Target>
+</Project>
